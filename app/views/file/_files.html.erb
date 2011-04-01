@@ -17,7 +17,13 @@
       <td><%= upload_file.file_file_name %></td>
       <td><%= upload_file.file.content_type %></td>
       <td><%= number_to_human_size(upload_file.file.size) %></td>
-      <td><%= link_to('delete', delete_file_path(upload_file), :remote => true) %></td>
+      <td>
+        <ul class='menu'>
+          <li><%= link_to('Download', download_file_path(upload_file), :class => 'awesome') %></li>
+          <li><%= link_to('Preview', preview_file_path(upload_file), :class => 'awesome', :target => '_blank') %></li>
+          <li><%= link_to('Remove', delete_file_path(upload_file), :remote => true, :class => 'awesome') %></li>
+        </ul>
+      </td>
     </tr>
     <% end %>
   </tbody>

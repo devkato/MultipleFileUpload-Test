@@ -10,7 +10,9 @@ DndMultiupload::Application.routes.draw do
   #get "file/upload"
 
   match "/upload" => "file#upload"
-  match "/delete/:id" => "file#delete", :as => "delete_file"
+  match "/delete/:id"   => "file#delete",   :as => "delete_file"
+  match "/download/:id" => "file#download", :as => "download_file"
+  match "/preview/:id"  => "file#preview",  :as => "preview_file"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

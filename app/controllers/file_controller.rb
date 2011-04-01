@@ -11,6 +11,20 @@ class FileController < ApplicationController
     end
   end
 
+  def download
+    @upload_file = UploadFile.find(params[:id])
+    path = @upload_file.file.path
+    send_file(path, 
+      :type         => "application/force-download",
+      :disposition  => "attachment; filename=\"#{File.basename(path)}\""
+    )
+  end
+
+  def preview
+    @upload_file = UploadFile.find(params[:id])
+    redirect_to @upload_file.file.url
+  end
+
   def delete
     @upload_file = UploadFile.find(params[:id])
 

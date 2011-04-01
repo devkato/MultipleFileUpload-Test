@@ -1,3 +1,20 @@
+li {
+  list-style-type: none;
+}
+
+ul.menu {
+  margin: 0;
+  padding: 0;
+}
+
+ul.menu li {
+  margin: 5px 0;
+  text-align: center;
+}
+
+ul.menu a {
+  width: 70px;
+}
 
 nav.pagination {
   margin: 10px 0;
