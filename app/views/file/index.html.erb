@@ -1,0 +1,68 @@
+<h1>File#index</h1>
+<p>Find me in app/views/file/index.html.erb</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Thumb</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tbody id="files">
+    <%= render :partial => 'files' %>
+  </tbody>
+</table>
+
+<p ondragstart="dragStart(event)" ondragenter="dragEnter(event);" ondragover="dragOver(event);" ondrop="drop(event);">You drop some images, here!</p>
+<div id="preview"></div>
+<div id="progress" style="height:5px; background-color:#0000FF;"></div>
+
+<script type="text/javascript" charset="utf-8">
+  function dragStart(e){
+    //e.preventDefault();
+  }
+
+  function dragEnter(e){
+    //e.preventDefault();
+  }
+
+  function dragOver(e){
+    e.preventDefault();
+  }
+
+  function drop(e){
+    var files = e.dataTransfer.files;
+    for(var i = 0; i < files.length; i++){
+      var request = new XMLHttpRequest();
+
+      request.upload.onprogress = function(e){
+        document.getElementById('progress').style.width = ((e.loaded / e.total) * 100 + "%");
+      }
+
+      request.upload.onload = function(e){
+        document.getElementById('progress').style.width = '0px';
+      }
+
+      request.open('post', "./upload");
+
+      var boundary = '----MultiPartFormBoundary' + (new Date()).getTime();
+      request.setRequestHeader('Content-Type', 'multipart/form-data; boundary=' + boundary);
+      request.setRequestHeader('Content-Length', files[i].size);
+      request.sendAsBinary(
+        '--' + boundary + '\r\n' +
+        'Content-Disposition: form-data; ' +
+        'name="file"; ' +
+        'filename="' + unescape(encodeURIComponent(files[i].name)) + '"\r\n' +
+        'Content-Type: ' + unescape(encodeURIComponent(files[i].type)) + '\r\n' + '\r\n' +
+        files[i].getAsBinary() + '\r\n' +
+        '--' + boundary + '--' + '\r\n'
+      );
+    }
+
+    e.preventDefault();
+  }
+</script>
+
+

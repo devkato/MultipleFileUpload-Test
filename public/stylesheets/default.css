@@ -1,0 +1,19 @@
+
+nav.pagination {
+  margin: 10px 0;
+  font-size: 1.3em;
+}
+
+nav.pagination span.page, span.prev, span.next {
+  border: 1px solid #AAAAAA;
+  padding: 0px 2px 0px 6px;
+  margin: 0px 2px;
+}
+
+nav.pagination span.current {
+}
+
+nav.pagination a {
+  text-decoration: none;
+}
+

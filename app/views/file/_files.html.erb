@@ -1,0 +1,27 @@
+<%= paginate @upload_files, :window => 2, :outer_window => 2, :remote => true %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Thumb</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="uploaded_files">
+    <% @upload_files.each do |upload_file| %>
+    <tr>
+      <td><%= file_preview(upload_file.file) %></td>
+      <td><%= upload_file.file_file_name %></td>
+      <td><%= upload_file.file.content_type %></td>
+      <td><%= number_to_human_size(upload_file.file.size) %></td>
+      <td><%= link_to('delete', delete_file_path(upload_file), :remote => true) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @upload_files, :window => 2, :outer_window => 2, :remote => true %>
+

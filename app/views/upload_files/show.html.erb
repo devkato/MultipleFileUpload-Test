@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>File file name:</b>
+  <%= @upload_file.file_file_name %>
+</p>
+
+<p>
+  <b>File content type:</b>
+  <%= @upload_file.file_content_type %>
+</p>
+
+<p>
+  <b>Content file size:</b>
+  <%= @upload_file.content_file_size %>
+</p>
+
+<p>
+  <b>Content updated at:</b>
+  <%= @upload_file.content_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_upload_file_path(@upload_file) %> |
+<%= link_to 'Back', upload_files_path %>
