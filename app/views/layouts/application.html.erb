@@ -16,7 +16,16 @@
   <body>
 
     <div class='container'>
-      <div class='column span-24 last'>
+      <div class='column span-7'>
+        <form id="file_upload" action="/upload" method="POST" enctype="multipart/form-data">
+          <input type="file" name="file" multiple />
+          <button>Upload</button>
+          <div>Upload files</div>
+        </form>
+        <table id="files"></table>
+      </div>
+
+      <div class='column span-17 last'>
         <%= yield %>
       </div>
     </div>

@@ -1,14 +1,6 @@
 <h1>File#index</h1>
 <p>Find me in app/views/file/index.html.erb</p>
 
-<form id="file_upload" action="/upload" method="POST" enctype="multipart/form-data">
-  <input type="file" name="file" multiple />
-  <button>Upload</button>
-  <div>Upload files</div>
-</form>
-
-<table id="files"></table>
-
 <div id="uploaded_files">
   <%= render :partial => 'files' %>
 </div>
